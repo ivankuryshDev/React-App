@@ -29,9 +29,9 @@ class AddTask extends Component {
 								<input placeholder="Нове завдання" className="form-control" ref={nameInput => this.nameInput = nameInput} required/>
 								</div>
 								<div className="col-4">
-									<div class="ui-group-buttons">
+									<div className="ui-group-buttons">
 										<button className="btn btn-success"><i className="fa fa-check"></i></button>
-										<div class="or"></div>
+										<div className="or"></div>
 										<button className="btn btn-danger" onClick={this.onAddTaskInput}><i className="fa fa-close"></i></button>
 									</div>
 								</div>

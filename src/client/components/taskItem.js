@@ -65,9 +65,9 @@ class TaskItem extends Component {
                           <input placeholder="Name" className="form-control" ref={nameInput => this.nameInput = nameInput} defaultValue={taskName} required/>
                           </div>
                           <div className="col-4">
-                            <div class="ui-group-buttons">
+                            <div className="ui-group-buttons">
                               <button className="btn btn-success"><i className="fa fa-check"></i></button>
-                              <div class="or"></div>
+                              <div className="or"></div>
                               <button className="btn btn-danger" onClick={this.onEdit}><i className="fa fa-close"></i></button>
                             </div>
                           </div>
