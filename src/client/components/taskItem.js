@@ -17,11 +17,11 @@ class TaskItem extends Component {
 		this.onDeleteTask = this.onDeleteTask.bind(this);
 		this.onEdit = this.onEdit.bind(this);
 		this.onEditTask = this.onEditTask.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   onDeleteTask(){
     const {onDeleteTask, id} = this.props;
-    console.log("Clicked Delete Task 1:", id);
 		onDeleteTask(id);
   }
   onEdit(){
@@ -36,7 +36,16 @@ class TaskItem extends Component {
     this.props.onEditTask(this.props.id, this.nameInput.value);
 		this.setState({ isEdit: false });
   }
-
+  handleInputChange(event){
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    console.log("target: ", target);
+    console.log("value: ", value);
+    console.log("name: ", name);
+    console.log("this.props.isСompleted: ", this.props.isСompleted);
+    this.props.handleInputChange(this.props.id, value);
+  }
 
   render() {
     const {id, taskName, isСompleted} = this.props;
@@ -45,31 +54,61 @@ class TaskItem extends Component {
         {
           this.state.isEdit
 					? (
-            <form onSubmit={this.onEditTask}>
-              <div className="form-group mb-3">
-                <div className="input-group-append">
-								  <input placeholder="Name" className="form-control" ref={nameInput => this.nameInput = nameInput} defaultValue={taskName}/>
-								  <button className="btn btn-success">Save</button>
-                  <button type="button" className="btn btn-danger" onClick={this.onEdit}>X</button>
-							  </div>
-							</div>
-            </form>
+            <li className="list-group-item">
+              <div className="row no-gutters">
+                <div className="col">
+                  <form onSubmit={this.onEditTask}>
+                    <div className="form-group mb-3">
+                      <div className="input-group-append">
+                        <div className="row no-gutters">
+                          <div className="col-8">
+                          <input placeholder="Name" className="form-control" ref={nameInput => this.nameInput = nameInput} defaultValue={taskName} required/>
+                          </div>
+                          <div className="col-4">
+                            <div class="ui-group-buttons">
+                              <button className="btn btn-success"><i className="fa fa-check"></i></button>
+                              <div class="or"></div>
+                              <button className="btn btn-danger" onClick={this.onEdit}><i className="fa fa-close"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </li>
           )
 					: (
-            <div>
-              <div className="input-group mb-1">
-                <div className="input-group-prepend">
-                    <div className="input-group-text">
-                      <input type="checkbox" aria-label="Checkbox for following text input"/>
-                    </div>
+            <li className="list-group-item box1">
+              <div className="row no-gutters">
+                
+                <div className="col-2">
+                  <label className="checkbox">
+                    <input type="checkbox" defaultChecked={isСompleted} onChange={this.handleInputChange}/>
+                    <span className="danger"></span>
+                  </label>
                 </div>
-                <input type="text" className="form-control" value={taskName} aria-label="Text input with checkbox" disabled />
-                <div className="input-group-append">
-                  <button type="button" className="btn btn-primary" onClick={this.onEdit}>E</button>
-                  <button type="button" className="btn btn-danger" onClick={this.onDeleteTask}>X</button>
+                
+                <div className="col-8">
+                  <p className="task">
+                    {
+                      isСompleted ?
+                      (
+                        <s><span>{taskName}</span></s>
+                      ):(
+                        <span>{taskName}</span>
+                      )
+                    }
+                  </p>
                 </div>
-              </div>              
-            </div>
+                
+                <ul className="icon">
+                    <li><a href="#" className="button-close" onClick={this.onDeleteTask}><i className="fa fa-close"></i></a></li>
+                    <li><a href="#" className="button-edit" onClick={this.onEdit}><i className="fa fa-edit"></i></a></li>
+                </ul>
+              </div>
+            </li>
           )
         }
       </Router>

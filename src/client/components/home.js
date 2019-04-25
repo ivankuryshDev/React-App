@@ -21,6 +21,11 @@ if (newE){
             id: 2,
             taskName: 'Make money',
             isСompleted: false
+          },
+          {
+            id: 3,
+            taskName: 'Make money evsd gsr rfserfgestg sfregesr rgtdrgesh lkmglsem sgmeklg sgkl gskel',
+            isСompleted: false
           }
 			]
 		},
@@ -36,7 +41,7 @@ if (newE){
           {
             id: 2,
             taskName: 'Go shopping',
-            isСompleted: false
+            isСompleted: true
           }
 			]
 		}
@@ -52,15 +57,18 @@ export default class Home extends Component {
       role: null,
       id: null,
       name: null,
-      lists: lists
+      lists: lists,
+      isAdded: false
     };
     
     this.onAddList = this.onAddList.bind(this);
     this.onAddTask = this.onAddTask.bind(this);
+    this.onAddListInput = this.onAddListInput.bind(this);
 		this.onDeleteList = this.onDeleteList.bind(this);
 		this.onDeleteTask = this.onDeleteTask.bind(this);
 		this.onEditList = this.onEditList.bind(this);
 		this.onEditTask = this.onEditTask.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentWillMount(){
@@ -74,35 +82,47 @@ export default class Home extends Component {
 	}
   
   onAddList(name){
-    console.log("Name: ", name);
     const lists = this.getLists();
-    id = lists.length + 1;
-    console.log("Length: ", lists.length);
-    lists.push({
-			id,
-			name
-    });
+    if(lists !== undefined){
+      id = lists.length + 1;
+      lists.push({
+			  id,
+			  name
+      });
+    }else{
+      var id = 1;
+      lists.push({
+			  id,
+			  name
+      });
+    }
+    
     this.setState({lists});
+    this.setState({ isAdded: false});
   }
   onAddTask(listId, taskName){
-    console.log("=== Id: ", listId);
-    console.log("=== Name: ", taskName);
-
     const lists = this.getLists();
     for(var item in lists){
-
       if(lists[item].id === listId){
-        var id = lists[item].tasks.length + 1;
-        console.log("Clicked weiljirgt:", id);
-        lists[item].tasks.push({
-          id,
-          taskName
-        });
+        if(lists[item].tasks !== undefined){
+          var id = lists[item].tasks.length + 1;
+          lists[item].tasks.push({
+            id,
+            taskName,
+            isСompleted: false
+          });
+        } else{
+          var id = 1;
+          lists[item].tasks = [];
+          lists[item].tasks.push({
+            id,
+            taskName,
+            isСompleted: false
+          });
+        }
       }
       this.setState({lists});
-      console.log("All Object:", lists);
     }
-
   }
   onDeleteList(listId){
     const lists = this.getLists();
@@ -116,7 +136,6 @@ export default class Home extends Component {
     const lists = this.getLists();
     for(var item in lists){
       for(var task in lists[item].tasks){
-        console.log("Clicked wergt:", lists[item].tasks[task].id);
         if(lists[item].tasks[task].id === taskId && lists[item].id === listId){
           delete lists[item].tasks[task];
         }
@@ -134,7 +153,6 @@ export default class Home extends Component {
 			return list;
 		});
 
-		console.log("onEditList: ", name);
 		this.setState({ lists });
   }
 
@@ -150,6 +168,28 @@ export default class Home extends Component {
     this.setState({ lists: lists });
   }
 
+  onAddListInput(){
+    if(this.state.isAdded){
+      this.setState({ isAdded: false});
+    }else{
+      this.setState({ isAdded: true});
+    }
+  }
+
+  handleInputChange(listId, taskId, value){
+    let lists = this.getLists();
+    for(var item in lists){
+      for(var task in lists[item].tasks){
+        if(lists[item].tasks[task].id === taskId && lists[item].id === listId){
+          console.log("isСompleted: ", lists[item].tasks[task].isСompleted);
+          lists[item].tasks[task].isСompleted = value;
+        }
+      }
+    }
+    this.setState({ lists: lists });
+    console.log("Updated object: ", lists);
+  }
+
   componentDidMount() {
     fetch('/api/')
 		.then(res => res.json())
@@ -160,37 +200,48 @@ export default class Home extends Component {
   render() {
     const { role } = this.state;
       return (
-        <div className='container'>
+        <div className="container">
           {role ?
-          <div id="task-table">
-            <h3>Task Manager</h3>
+          <div>
             <br></br>
             <div className="row">
               {
-                this.state.lists.map((list) => {
-                  return (
-                    <div key={list.id} className="col-3">
-                      <div className="list">
-                        <ListItem
-                          key={list.id}
-                          {...list}
-                          onDeleteList={this.onDeleteList}
-                          onDeleteTask={this.onDeleteTask}
-                          onEditList={this.onEditList}
-                          onEditTask={this.onEditTask}
-                          onAddTask={this.onAddTask}
-                        />
+                typeof this.state.lists !== "undefined" ?
+                (
+                  this.state.lists.map((list) => {
+                    return (
+                      <div key={list.id} className="col-4">
+                        <div className="list">
+                          <ListItem
+                            key={list.id}
+                            {...list}
+                            onDeleteList={this.onDeleteList}
+                            onDeleteTask={this.onDeleteTask}
+                            onEditList={this.onEditList}
+                            onEditTask={this.onEditTask}
+                            onAddTask={this.onAddTask}
+                            handleInputChange={this.handleInputChange}
+                          />
+                        </div>
                       </div>
+                    );
+                  })
+                ) : (
+                  <div></div>
+                )
+              }
+              <div className="col-4">                              
+                {
+                  this.state.isAdded ?
+                  (
+                    <AddList onAddList={this.onAddList} onAddListInput={this.onAddListInput}/>
+                  ):(
+                    <div className="add-list" onClick={this.onAddListInput}>  
+                      <span>+ Додати список</span>
                     </div>
-                  );
-                })
-              }                
-              
-              <div className="col-3">
-                <div className="add-list">
-                  <AddList onAddList={this.onAddList}	/>
-                </div>
-              </div>
+                  )
+                }
+              </div>  
             </div>
           </div>
           

@@ -44,10 +44,10 @@ class Header extends Component {
 		if (this.state.role === 'admin' || this.state.role === 'superAdmin' || this.state.role === 'recruiter' ) {
 			return (	
 				<header>
-					<nav className="navbar navbar-expand-lg navbar-dark bg-primary d-flex flex-row">													
+					<nav className="navbar navbar-expand-lg d-flex flex-row">													
 						<div className='collapse navbar-collapse d-flex flex-row justify-content-between'>
 							<ul className="navbar-nav align-items-center">	
-								<span className="navbar-brand mb-0 h1">Recruiter App</span>												
+								<span className="navbar-brand mb-0 h1">Task manager App</span>												
 								<li className="nav-item">
 									<a className="nav-link" href="/">Головна</a>
 								</li>

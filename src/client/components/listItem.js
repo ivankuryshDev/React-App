@@ -25,22 +25,24 @@ class ListItem extends Component {
     this.onEditTask = this.onEditTask.bind(this);
     this.onAddTask = this.onAddTask.bind(this);
     this.onAddTaskInput = this.onAddTaskInput.bind(this);
-
-    
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
   onDeleteList(){
-    console.log("Clicked: Delete");
     const {onDeleteList, id} = this.props;
 		onDeleteList(id);
   }
 
   onDeleteTask(taskId){
     const {onDeleteTask, id} = this.props;
-    console.log("Clicked Delete Task 2: " + taskId + " And List " + id);
     onDeleteTask(id, taskId);
   }
   onEdit(){
-    this.setState({ isEdit: true });
+    if(this.state.isEdit){
+      this.setState({ isEdit: false });
+    }else{
+      this.setState({ isEdit: true });
+    }
   }
   onEditList(event){
     event.preventDefault();
@@ -49,15 +51,11 @@ class ListItem extends Component {
   }
   onEditTask(taskId, taskName){
     const {onEditTask, id} = this.props;
-    console.log("id: ", id);
-    console.log("taskId: ", taskId);
-    console.log("taskName: ", taskName);
     onEditTask(id, taskId, taskName);
   }
 
   onAddTask(name){
     const {onAddTask, id} = this.props;
-    console.log("List id: ", this.props.id);
     onAddTask(id, name);
     this.setState({ isAdded: false});
   }
@@ -68,32 +66,68 @@ class ListItem extends Component {
       this.setState({ isAdded: true});
     }
   }
+  handleInputChange(taskId, value){
+    const {handleInputChange, id} = this.props;
+    handleInputChange(id, taskId, value);
+  }
   
   render() {
     const {id, name, tasks} = this.props;
     return (
       <Router>
-        {
-          this.state.isEdit
-					? (
-            <form onSubmit={this.onEditList}>
-              <div className="form-group mb-3">
-                <div className="input-group-append">
-								  <input placeholder="Name" className="form-control" ref={nameInput => this.nameInput = nameInput} defaultValue={name}/>
-								  <button className="btn btn-success">Save</button>
-							  </div>
-							</div>
-            </form>
-          )
-					: (
-            <div>
-              <div className="input-group mb-3" id="head-list">
-                <input id="head-list-input" type="text" className="form-control" value={name} aria-label="Text input with checkbox" disabled/>
-                <div className="input-group-append">
-                  <button type="button" className="btn btn-primary" onClick={this.onEdit}>E</button>
-                  <button id="head-button-delete" type="button" className="btn btn-danger" onClick={this.onDeleteList}>X</button>
+            <ul className="list-group fa-ul">
+              <li className="list-group-item">
+                <div className="row no-gutters">
+                  {
+                    this.state.isEdit ?
+                    (
+                      <div className="col">
+                        <form onSubmit={this.onEditList}>
+                          <div className="form-group mb-3">
+                            <div className="input-group-append">
+
+                              <div className="row no-gutters">
+                                <div className="col-8">
+                                  <input placeholder="Name" className="form-control input-list" ref={nameInput => this.nameInput = nameInput} defaultValue={name} required/>
+                                </div>
+                                <div className="col-4">
+                                  <div class="ui-group-buttons">
+                                    <button className="btn btn-success"><i className="fa fa-check"></i></button>
+                                    <div class="or"></div>
+                                    <button className="btn btn-danger" onClick={this.onEdit}><i className="fa fa-close"></i></button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    ):(
+                      <div className="col">
+                        <div className="row no-gutters">
+
+                          <div className="col-10">
+                            <h5 className="task">{name}</h5>
+                          </div>
+                          
+                          <div className="col-2">
+                            <div className="dropdown">
+                              <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="fa fa-cog" aria-hidden="true"></i>
+                              </button>
+                              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a className="dropdown-item" onClick={this.onEdit}><i className="fa fa-edit fa-fw"></i>Edit</a>
+                                <a className="dropdown-item" onClick={this.onDeleteList}><i className="fa fa-close fa-fw"></i>Delete</a>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    )
+                  }
                 </div>
-              </div>
+              </li>
               {
                 typeof tasks !== "undefined" ?
                 (
@@ -105,9 +139,10 @@ class ListItem extends Component {
                           onDeleteTask={this.onDeleteTask}
                           onEditList={this.onEditList}
                           onEditTask={this.onEditTask}
-                        />
-                    );
-                  })
+                          handleInputChange={this.handleInputChange}
+                          />
+                          );
+                        })
                 ) : (
                   <div></div>
                 )
@@ -115,15 +150,18 @@ class ListItem extends Component {
               {
                 this.state.isAdded ?
                 (
-                  <AddTask onAddTask={this.onAddTask}/>
+                  <AddTask onAddTask={this.onAddTask} onAddTaskInput={this.onAddTaskInput}/>
                 ):(
-                  <button type="button" className="btn btn-success add-task-button" onClick={this.onAddTaskInput}>Add task</button>
+                  <li className="list-group-item" onClick={this.onAddTaskInput}>
+                    <div className="row no-gutters">
+                      <div className="col">
+                        <span>+ Додати завдання</span>
+                      </div>
+                    </div>
+                  </li>
                 )
               }
-              
-            </div>
-          )
-        }
+            </ul>
       </Router>
     );
   }
