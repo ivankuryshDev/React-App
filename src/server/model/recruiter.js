@@ -34,6 +34,9 @@ const recruiter = new Schema({
     type: String,
     required: [true, "can't be an empty field"],
     default: 'recruiter'
+  },
+  taskLists: {
+    type: Array
   }
 },{collection: "admins"});
 

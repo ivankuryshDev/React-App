@@ -7,7 +7,7 @@ import{
 } from 'react-router-dom';
 
 import Header from './components/header';
-import Home from './components/home';
+import Home from './components/taskManager/home';
 import Login from './components/login';
 import Register from './components/register';
 import NewCandidate from './components/newCandidate';

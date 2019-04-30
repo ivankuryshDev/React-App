@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router,
    Link, Redirect } from 'react-router-dom';
-import Login from './login';
+import Login from '../login';
 import ListItem from './listItem';
 import AddList from './addList';
 
@@ -57,7 +57,7 @@ export default class Home extends Component {
       role: null,
       id: null,
       name: null,
-      lists: lists,
+      lists: [],
       isAdded: false
     };
     
@@ -72,9 +72,16 @@ export default class Home extends Component {
   }
 
   componentWillMount(){
-		const lists = this.getLists();
-		this.setState({lists});
-		console.log(lists);
+    fetch('/api/')
+      .then(res => res.json())
+      .then(res => this.setState({ role: res.role, userId: res.id, name: res.name}))
+      .then(res => {
+          fetch(`/api/${this.state.userId}`)
+            .then(res => res.json())
+            .then(res => this.setState({ lists: res.taskLists, email: res.email, message: res.message }))
+            .catch(err => err);
+          }
+      ).catch(err => err);
 	}
 
 	getLists(){
@@ -91,6 +98,7 @@ export default class Home extends Component {
       });
     }else{
       var id = 1;
+      lists = [];
       lists.push({
 			  id,
 			  name
@@ -99,7 +107,10 @@ export default class Home extends Component {
     
     this.setState({lists});
     this.setState({ isAdded: false});
+
+    this.patchTaskLists();
   }
+
   onAddTask(listId, taskName){
     const lists = this.getLists();
     for(var item in lists){
@@ -123,13 +134,19 @@ export default class Home extends Component {
       }
       this.setState({lists});
     }
+    this.patchTaskLists();
   }
   onDeleteList(listId){
     const lists = this.getLists();
-    const filteredList = lists.filter(list => {
-      return list.id !== listId;
-    });
-    this.setState({lists: filteredList});
+    for(var item in lists){
+      if(lists[item].id === listId){
+        var index = lists.findIndex(x => x.id === listId);
+        lists.splice(index, 1);
+      }
+    }
+    this.setState({lists: lists});
+
+    this.patchTaskLists();
   }
 
   onDeleteTask(listId, taskId){
@@ -137,11 +154,14 @@ export default class Home extends Component {
     for(var item in lists){
       for(var task in lists[item].tasks){
         if(lists[item].tasks[task].id === taskId && lists[item].id === listId){
-          delete lists[item].tasks[task];
+          var index = lists[item].tasks.findIndex(x => x.id === taskId);
+          lists[item].tasks.splice(index,  1);
         }
       }
     }
     this.setState({lists: lists});
+
+    this.patchTaskLists();
   }
 
   onEditList(name, id){
@@ -153,7 +173,9 @@ export default class Home extends Component {
 			return list;
 		});
 
-		this.setState({ lists });
+    this.setState({ lists });
+    
+    this.patchTaskLists();
   }
 
   onEditTask(listId, taskId, taskName){
@@ -166,6 +188,8 @@ export default class Home extends Component {
       }
     }
     this.setState({ lists: lists });
+
+    this.patchTaskLists();
   }
 
   onAddListInput(){
@@ -188,14 +212,25 @@ export default class Home extends Component {
     }
     this.setState({ lists: lists });
     console.log("Updated object: ", lists);
+
+    this.patchTaskLists();
   }
 
-  componentDidMount() {
-    fetch('/api/')
-		.then(res => res.json())
-    .then(res => this.setState({ role: res.role, id: res.id, name: res.name }))    
-    .catch(err => err);    
+  patchTaskLists(){
+    console.log("this.state.email:", this.state.email);
+    return fetch('/api/admin/taskLists', {
+      method: 'PATCH',
+      body: JSON.stringify({email: this.state.email, taskLists: this.state.lists }),
+      headers: { 'Content-type': 'application/json' }
+    }).catch(err => err);
   }
+
+  // componentDidMount() {
+  //   fetch('/api/')
+	// 	.then(res => res.json())
+  //   .then(res => this.setState({ role: res.role, userId: res.id, name: res.name}))    
+  //   .catch(err => err);  
+  // }
 
   render() {
     const { role } = this.state;

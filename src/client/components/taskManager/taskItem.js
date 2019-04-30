@@ -25,6 +25,7 @@ class TaskItem extends Component {
 		onDeleteTask(id);
   }
   onEdit(){
+    console.log(this.props.id);
     if(this.state.isEdit){
       this.setState({ isEdit: false });
     }else{

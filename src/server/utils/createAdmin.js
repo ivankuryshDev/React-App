@@ -24,7 +24,8 @@ module.exports.post = function (req, res) {
             password: req.body.password,
             secondEmail: req.body.secondEmail,
             name: req.body.name,
-            role: "admin"
+            role: "admin",
+            taskLists: []
           });
 
           admin.save((error) => {
@@ -51,7 +52,8 @@ module.exports.post = function (req, res) {
             password: req.body.password,
             secondEmail: req.body.secondEmail,
             name: req.body.name,
-            role: "recruiter"
+            role: "recruiter",
+            taskLists: []
           });
 
           recruiter.save((error) => {

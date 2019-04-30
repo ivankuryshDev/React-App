@@ -54,7 +54,6 @@ class Header extends Component {
 								<li className="nav-item dropdown">
 									<a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a>
 									<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-										<Link className="dropdown-item" to="/nonFunctional">Додати кандидата</Link>
 										<Link className="dropdown-item" to="/setting">Налаштування</Link>
 										{this.state.role === 'admin' || this.state.role === 'superAdmin' ? (
 										<Link className="dropdown-item" to="/admin">Адмін</Link>

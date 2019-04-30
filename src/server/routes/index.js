@@ -6,6 +6,7 @@ const sendInvite = require("../utils/email/invite/sendInvite");
 const saveManyInvites = require("../utils/email/invite/saveManyInvites");
 const getAdmin = require("../utils/getAdmin");
 const patchAdmin = require("../utils/patchAdminById");
+
 const setNewPassword = require("../utils/email/passwordReset/setNewPassword");
 const createEmployee = require('../utils/createEmployee');
 const showEmployees = require('../utils/showEmployees');
@@ -58,9 +59,11 @@ router.post("/invite_many", saveManyInvites.saveAndSend);
 
 router.get("/invite_many", (req,res) => res.send("invite page"));
 
-router.get("/:id",getAdmin.get);
+router.get("/:id",getAdmin.get); 
 
 router.patch("/:id",patchAdmin.patch);
+
+
 
 router.get("/reset/:token",setNewPassword.get);
 

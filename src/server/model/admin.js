@@ -35,6 +35,9 @@ const admin = new Schema({
     required: [true, "can't be an empty field"],
     default: 'admin'
   },
+  taskLists: {
+    type: Array
+  },
   resetPasswordToken: String,
   resetPasswordExpires: Date
 
