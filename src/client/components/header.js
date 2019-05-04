@@ -52,8 +52,8 @@ class Header extends Component {
 									<a className="nav-link" href="/">Головна</a>
 								</li>
 								<li className="nav-item dropdown">
-									<a className="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a>
-									<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a>
+									<div className="dropdown-menu" id="dropdown-menu-header" aria-labelledby="navbarDropdown">
 										<Link className="dropdown-item" to="/setting">Налаштування</Link>
 										{this.state.role === 'admin' || this.state.role === 'superAdmin' ? (
 										<Link className="dropdown-item" to="/admin">Адмін</Link>
@@ -64,12 +64,12 @@ class Header extends Component {
 									</div>
 								</li>
 							</ul>
-							<ul className='navbar-nav'>
+							{/* <ul className='navbar-nav'>
 								<form className="form-inline">
 									<input className="form-control mr-2" type="search" placeholder="Пошук" aria-label="Search"/>
 									<button className="btn btn-light my-sm-0" type="submit">Шукати</button>
 								</form>
-							</ul>							
+							</ul>							 */}
 							<ul className='navbar-nav'>
 								<li className='nav-item userHeader'>
 									<Link to='/setting' className='nav-link'>{this.showUser() + ' ' + this.state.name}</Link>
