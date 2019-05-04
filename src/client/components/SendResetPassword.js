@@ -19,17 +19,47 @@ componentDidMount(){
 
 	render() {
 		return (
-      <form method="POST" action="/api/password_reset" className="container">
-        <h2>Відновлення паролю</h2>
-        <div className="form-group">
-          <label htmlFor="email">Емейл</label>
-          <input name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Введіть емейл"/>
+      <div className="login-wrap">
+        <div className="login-html">
+          <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /><label htmlFor="tab-1" className="tab">Відновлення паролю</label>
+          <input id="tab-2" type="radio" name="tab" className="for-pwd" /><label htmlFor="tab-2" className="tab"></label>
+          <div className="login-form">
+            <form method="POST" action="/api/password_reset" className="form-horizontal">
+              <div className="sign-in-htm">
+
+                <div className="group">
+                  <label htmlFor="email" className="label">Email</label>
+                  <input name="email" type="email" className="input" id="email" aria-describedby="emailHelp" placeholder="Введіть емейл"/>
+                </div>
+                
+                <div className="group">
+                  <input type="submit" className="button" value="Надіслати" />
+                </div>
+
+                <div className="group">
+                  <a type="submit" className="btn btn-primary" href='/'>На головну</a>
+                </div>
+                
+                <span className="text-warning">{this.state.error ? this.state.error: " "}</span>
+                <span className="text-success">{this.state.message ? this.state.message: " "}</span>
+
+                <div className="hr"></div>
+              </div>
+            </form>
+          </div>
         </div>
-        <button type="submit" className="btn btn-block btn-primary">Надіслати</button>
-        <a type="submit" className="btn btn-block btn-primary" href='/'>На головну</a>
-        <span className="text-danger">{this.state.error ? this.state.error: " "}</span>
-        <span className="text-success">{this.state.message ? this.state.message: " "}</span>
-      </form>
+      </div>
+      // <form method="POST" action="/api/password_reset" className="container">
+      //   <h2>Відновлення паролю</h2>
+      //   <div className="form-group">
+      //     <label htmlFor="email">Емейл</label>
+      //     <input name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Введіть емейл"/>
+      //   </div>
+      //   <button type="submit" className="btn btn-block btn-primary">Надіслати</button>
+      //   <a type="submit" className="btn btn-block btn-primary" href='/'>На головну</a>
+      //   <span className="text-danger">{this.state.error ? this.state.error: " "}</span>
+      //   <span className="text-success">{this.state.message ? this.state.message: " "}</span>
+      // </form>
 		);
 	}
 }
