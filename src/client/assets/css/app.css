@@ -546,7 +546,22 @@ s {
 
 .userHeader>.nav-link {
   font-size: 20px;
+}
+nav.navbar{
+  border: 1px dashed red;
+  color: red;
+  position: relative;
+  opacity: 0.8;
+  padding: 10px;
+}
 
+a.nav-link{
+  cursor: pointer;
+}
+
+.navbar {
+  z-index: 1001;
+  opacity: 1;
 }
 
 /* ================ nonFunctional =================== */
