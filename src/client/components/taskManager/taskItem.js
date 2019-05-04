@@ -105,8 +105,8 @@ class TaskItem extends Component {
                 </div>
                 
                 <ul className="icon">
-                    <li><a href="#" className="button-close" onClick={this.onDeleteTask}><i className="fa fa-close"></i></a></li>
-                    <li><a href="#" className="button-edit" onClick={this.onEdit}><i className="fa fa-edit"></i></a></li>
+                    <li><a className="button-close" onClick={this.onDeleteTask}><i className="fa fa-close"></i></a></li>
+                    <li><a className="button-edit" onClick={this.onEdit}><i className="fa fa-edit"></i></a></li>
                 </ul>
               </div>
             </li>

@@ -8,7 +8,7 @@ module.exports.send = function (req, res, next) {
       {
         'From': {
           'Email': 'development2728@gmail.com',
-          'Name': 'Recruiter App'
+          'Name': 'Task Manager App'
         },
         'To': [
           {
@@ -16,8 +16,8 @@ module.exports.send = function (req, res, next) {
           }
         ],
         'Subject': 'Reset password',
-        'TextPart': 'Recruiter App',
-        'HTMLPart': '<h3>Recruiter App</h3>' +
+        'TextPart': 'Task Manager App',
+        'HTMLPart': '<h3>Task Manager App</h3>' +
             '<p>You can reset password by going throught link below </p>'
             + 'http://' + "localhost:3000" + '/reset/' + generateToken.generate(req,res) + '\n\n'
       }

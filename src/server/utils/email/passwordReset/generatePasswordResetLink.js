@@ -3,8 +3,8 @@ let generateToken = require("../../generateToken");
 
 module.exports.generate = function (req,res) {
 
-    let actualDate = new Date();
-    actualDate.setDate(actualDate.getDate() + 1);
+  let actualDate = new Date();
+  actualDate.setDate(actualDate.getDate() + 1);
 
   let resetData = {
     resetPasswordToken: generateToken.generate(),
