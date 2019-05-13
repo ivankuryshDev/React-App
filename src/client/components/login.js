@@ -34,16 +34,17 @@ class Login extends Component {
                 </div>
               </form>
               <div className="for-pwd-htm">
+                  {/*  */}
 
-                {/* <div class="group">
-                  <label for="user" class="label">Username or Email</label>
-                  <input id="user" type="text" class="input" />
-                </div>
-                <div class="group">
-                  <input type="submit" class="button" value="Reset Password" />
-                </div>
-                <div class="hr"></div> */}
-                
+                  {/* <div class="group">
+                    <label for="user" class="label">Username or Email</label>
+                    <input id="user" type="text" class="input" />
+                  </div>
+                  <div class="group">
+                    <input type="submit" class="button" value="Reset Password" />
+                  </div>
+                  <div class="hr"></div> */}
+                   {/*  */}
               </div>
             </div>
           </div>
