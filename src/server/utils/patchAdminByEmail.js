@@ -12,7 +12,7 @@ module.exports.patch = function (req,res) {
   Admin.findOneAndUpdate({email: req.body.email}, {$set: updatedOptions}, function(error){
     if(error){
       res.send(error);
-    }else if(updatedOptions.role === 'recruiter' && req.session.passport.user.email === req.body.email){
+    }else if(updatedOptions.role === 'user' && req.session.passport.user.email === req.body.email){
       req.logout();
       res.redirect('/login')
     } else {

@@ -33,19 +33,30 @@ class Login extends Component {
                   <div className="hr"></div>
                 </div>
               </form>
-              <div className="for-pwd-htm">
-                  {/*  */}
 
-                  {/* <div class="group">
-                    <label for="user" class="label">Username or Email</label>
-                    <input id="user" type="text" class="input" />
+              <form method="POST" action="api/invite_many" className="form-horizontal">
+                <div className="for-pwd-htm">
+
+                  <div className="group">
+                    <label htmlFor="email" className="label">Email</label>
+                    <input name="email" type="email" className="input" id="email" aria-describedby="emailHelp" placeholder="Введіть емейл" required/>
                   </div>
-                  <div class="group">
-                    <input type="submit" class="button" value="Reset Password" />
+
+                  
+                  
+                  <div className="group">
+                    <input type="submit" className="button" value="Надіслати" />
                   </div>
-                  <div class="hr"></div> */}
-                   {/*  */}
-              </div>
+                  
+                  {/* <span className="text-warning">{this.state.error ? this.state.error: " "}</span>
+                  <span className="text-success">{this.state.message ? this.state.message: " "}</span> */}
+
+                  <div className="hr"></div>
+                </div>
+              </form>
+              {/* <div className="for-pwd-htm">
+                  
+              </div> */}
             </div>
           </div>
       </div>

@@ -20,7 +20,7 @@ const invitation = new Schema({
   role: {
     type:String,
     required: [true,"can't be empty field"],
-    enum: ["admin","recruiter"]}
+    enum: ["admin","user"]}
 },{collection: 'invitations'});
 
 invitation.path("email").validate((value) =>{

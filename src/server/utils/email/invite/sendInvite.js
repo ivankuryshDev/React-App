@@ -11,17 +11,17 @@ module.exports.send = function (req, res) {
       {
         'From': {
           'Email': 'development2728@gmail.com',
-          'Name': 'Recruiter App'
+          'Name': 'Task manager App'
         },
         'To': [
           {
             'Email': req.body.email
           }
         ],
-        'Subject': 'Invite to Recruiter App!',
-        'TextPart': 'Recruiter App',
-        'HTMLPart': '<h3>Recruiter App</h3>' +
-            '<p>You are invited to register in the task-manager-app.' +
+        'Subject': 'Invite to Task manager App!',
+        'TextPart': 'Task manager App',
+        'HTMLPart': '<h3>Task manager App</h3>' +
+            '<p>You are invited to register in the Task manager App. ' +
             'Please confirm the registration! </p>' + 'http://' + "localhost:3000" + '/signup/'
             + token + '\n\n'
       }
@@ -41,7 +41,7 @@ module.exports.send = function (req, res) {
       .catch(function (error) {
         if (res.headersSent) {
         } else {
-          req.session.errorOnSubmit = "Неправильний пароль або паролі не співпадають";
+          req.session.errorOnSubmit = "Неправильний пароль або паролі не співпадають!";
           res.send({errorOnSubmit: req.session.errorOnSubmit });
         }
 

@@ -54,7 +54,7 @@ export default class AddInvitationTable extends Component {
     this.setState({
       [name]: value
     })
-  };
+  }; 
 
   render() {
     return (

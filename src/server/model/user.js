@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const recruiter = new Schema({
+const user = new Schema({
 
   email: {
     type: String,
@@ -33,26 +33,26 @@ const recruiter = new Schema({
   role: {
     type: String,
     required: [true, "can't be an empty field"],
-    default: 'recruiter'
+    default: 'user'
   },
   taskLists: {
     type: Array
   }
 },{collection: "admins"});
 
-recruiter.path("email").validate((value) =>{
+user.path("email").validate((value) =>{
   value = value.trim();
   return value.match(/\S+@\S+\.\S+/);
 }, "Incorrect email address");
 
-recruiter.path("secondEmail").validate((value) =>{
+user.path("secondEmail").validate((value) =>{
   value = value.trim();
   return value.match(/\S+@\S+\.\S+/);
 }, "Incorrect email address");
 
-recruiter.pre('findOneAndUpdate', function(next) {
+user.pre('findOneAndUpdate', function(next) {
   this.options.runValidators = true;
   next();
 });
 
-module.exports = mongoose.model("recruiter",recruiter);
+module.exports = mongoose.model("user",user);

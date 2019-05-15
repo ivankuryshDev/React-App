@@ -69,7 +69,7 @@ class EditUser extends Component {
                       <input type="email" name="secondEmail" placeholder="Second Email" className="form-control" ref={secondEmail => this.secondEmail = secondEmail} defaultValue={secondEmail} required />
                       <span>Роль</span>
                       <select className="form-control" name="role" ref={role => this.role = role} defaultValue={role}>
-                        <option value="recruiter" defaultValue>Рекрутер</option>
+                        <option value="user" defaultValue>Користувач</option>
                         <option value="admin" >Адміністратор</option>
                       </select>
                       <br></br>

@@ -16,12 +16,12 @@ class AddUser extends Component {
           </label>
 					<br></br>
           <label htmlFor="role">
-          Пароль
+          Роль
 					<br></br>
           <select className="form-control" id="role" value={this.props.newRole}  name="role" onChange={this.props.handleInputChange} required>
             <option value="">Виберіть роль</option>
             <option value="admin">Адміністратор</option>
-            <option value="recruiter">Рекрутер</option>
+            <option value="user">Користувач</option>
           </select>
           </label>
 					<br></br>

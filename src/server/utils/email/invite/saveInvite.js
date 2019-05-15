@@ -7,6 +7,10 @@ module.exports.save = function (req,res) {
   let expirationDate = new Date();
   expirationDate.setDate(expirationDate.getDate() + 1);
 
+  if(req.body.role === undefined){
+    req.body.role = 'user';
+  }
+
   let invitation = new Invitation({
     invitationToken: invitationToken,
     invitationExpires: expirationDate,

@@ -32,8 +32,8 @@ class Header extends Component {
 			case 'superAdmin':
 				userRole = 'Директор';
 				break;
-			case 'recruiter':
-				userRole = 'Рекрутер';
+			case 'user':
+				userRole = 'Користувач';
 				break;
 		}
 
@@ -41,7 +41,7 @@ class Header extends Component {
 	}
 
 	render() {
-		if (this.state.role === 'admin' || this.state.role === 'superAdmin' || this.state.role === 'recruiter' ) {
+		if (this.state.role === 'admin' || this.state.role === 'superAdmin' || this.state.role === 'user' ) {
 			return (	
 				<header>
 					<nav className="navbar navbar-expand-lg d-flex flex-row">													

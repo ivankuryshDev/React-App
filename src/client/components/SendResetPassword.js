@@ -37,7 +37,7 @@ componentDidMount(){
                 </div>
 
                 <div className="group">
-                  <a type="submit" className="btn btn-primary" href='/'><i class="fa fa-arrow-left"></i> На головну</a>
+                  <a type="submit" className="btn btn-primary" href='/'><i className="fa fa-arrow-left"></i> На головну</a>
                 </div>
                 
                 <span className="text-warning">{this.state.error ? this.state.error: " "}</span>
