@@ -3,9 +3,9 @@
   padding: 0px;
 }
 
-img {
+/* img {
   max-width: 100%;
-}
+} */
 
 body,
 html {
@@ -21,11 +21,40 @@ nav.navbar{
   background-color: #000000;
   opacity: 0.5;
 }
+ul.navbar-nav.align-items-center{
+  height: 65px;;
+}
+a.navbar-brand{
+  padding: 0px;
+  margin: 0;
+  position: relative;
+  left: 100px;
+  transform: scale(0.8);
+}
+#login-logo{
+  position: absolute;
+  z-index: 2;
+  /* transform: scale(0.9); */
+  transform: rotate(2deg);
+  top: -70px;
+  left: 300;
+  margin: -12px -70px;;
+}
+img#login-logo{
+  /* box-shadow: 0px 0px 5px rgb(51, 51, 51);
+  box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7); */
+  /* background-color: #CECECE; */
+  /* border: 1px solid #000; */
+}
 
-/* #logo {
-  width: 50px;
-  height: 50px;
-} */
+#logo {
+  /* transform: scale(0.8); */
+  padding: 0px;
+  margin: 0;
+  position: relative;
+  left: 100px;
+  /* position: absolute; */
+}
 
 
 /* Form */
@@ -80,29 +109,6 @@ nav.navbar{
   text-align: center
 }
 
-/* ================ page newCandidate =================== */
-
-.headerEmployeeCreate {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.candidateInputHeader {
-  font-size: 28px;
-}
-
-.workTypeHeader {
-  margin-bottom: 0px;
-}
-
-.socialMedia {
-  font-weight: bold;
-}
-
-.createCandidateBtn {
-  margin-bottom: 20px;
-}
 
 /* ================ page Home =================== */
 
@@ -267,7 +273,6 @@ li.list-group-item:last-child{
 }
 div.dropdown-menu{
   border-radius: 10px;
-  opacity: 0.7;
   background-color: #ffffff;
   transition: all .1s ease .1s;
 }
@@ -544,15 +549,20 @@ s {
 
 /* ================ Header =================== */
 
+nav.navbar.navbar-expand-lg.d-flex.flex-row{
+  margin-bottom: 10px;
+}
+
 .userHeader>.nav-link {
   font-size: 20px;
 }
 nav.navbar{
-  border: 1px dashed red;
-  color: red;
+  /* border: 1px dashed red; */
+  color: #007bff;
   position: relative;
   opacity: 0.8;
-  padding: 10px;
+  padding: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 a.nav-link{
@@ -563,13 +573,10 @@ a.nav-link{
   z-index: 1001;
   opacity: 1;
 }
-
-/* ================ nonFunctional =================== */
-
-.nonFunctionalHeader {
-  margin-top: 150px;
-  text-align: center;
+div.collapse.navbar-collapse.d-flex.flex-row.justify-content-between:first-child{
+  margin-left: 20px;
 }
+
 
 /* ================ Login =================== */
 
@@ -671,7 +678,7 @@ a.nav-link{
   background:rgba(255,255,255,.1);
 }
 
-input#email.input, input#password.input, input#confirmPassword.input, input#name.input{
+input#email.input, input#emailEnter.input, input#password.input, input#confirmPassword.input, input#name.input{
   background-color: #fff;
   color: #000;
   opacity: 0.5;
@@ -750,3 +757,11 @@ input#email.input, input#password.input, input#confirmPassword.input, input#name
 .foot-lnk{
 	text-align:center;
 }
+
+/* th, td{
+  background-color: #fff;
+} */
+/* div#exampleModalLong.modal.fade.show{
+  display: block;
+  padding-right: 17px;
+} */

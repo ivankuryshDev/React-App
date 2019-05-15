@@ -8,8 +8,6 @@ const getAdmin = require("../utils/getAdmin");
 const patchAdmin = require("../utils/patchAdminById");
 
 const setNewPassword = require("../utils/email/passwordReset/setNewPassword");
-const createEmployee = require('../utils/createEmployee');
-const showEmployees = require('../utils/showEmployees');
 const { ensureAuthenticated } = require('../config/auth');
 const passport = require('passport');
 
@@ -29,8 +27,6 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-router.post('/new_candidate', createEmployee.post);
-
 router.get('/', ensureAuthenticated, (req, res) => {
   res.send({
     role: req.session.passport.user.role,
@@ -38,8 +34,6 @@ router.get('/', ensureAuthenticated, (req, res) => {
     name: req.session.passport.user.name
   });
 });
-
-router.get('/employees', showEmployees.get);
 
 router.get('/admin', ensureAuthenticated, (req, res) => {
   res.send({role: req.session.passport.user.role});   

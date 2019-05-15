@@ -74,7 +74,7 @@ export default class Setting extends Component {
                 <input type="button" className="btn btn-primary mt-1" onClick={this.onEdit} value="Редагувати" />
               </div>
               <div className="col">
-                <a className="btn btn-danger mt-1" href="/setting">Відмінити</a>
+                <a className="btn btn-danger mt-1" href="/">Відмінити</a>
               </div>
             </div>
           </div>
