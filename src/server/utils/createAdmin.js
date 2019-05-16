@@ -1,11 +1,11 @@
 const Admin = require("../model/admin");
-const Recruiter = require("../model/recruiter");
+const User = require("../model/user");
 const Invitation = require("../model/invitation");
 
 module.exports.post = function (req, res) {
 
   if (req.body.password !== req.body.confirmPassword) {
-    req.session.errorOnSubmit = "Паролі не співпадають";
+    req.session.errorOnSubmit = "Паролі не співпадають!";
               res.redirect("back");
   } else {
     Invitation.findOne({ email: req.body.email }, function (error, invitation) {
@@ -15,7 +15,7 @@ module.exports.post = function (req, res) {
       } else if (req.params.token !== invitation.invitationToken
         || invitation.invitationExpires < Date.now()
         || invitation.email !== req.body.email) {
-          req.session.errorOnSubmit = "Вийшов строк дії токена або він некоректний";
+          req.session.errorOnSubmit = "Вийшов строк дії токена або він некоректний!";
               res.redirect("back");
       } else {
         if (invitation.role === "admin") {
@@ -30,13 +30,13 @@ module.exports.post = function (req, res) {
 
           admin.save((error) => {
             if (error) {
-              req.session.errorOnSubmit = "Неправильний пароль або паролі не співпадають";
+              req.session.errorOnSubmit = "Неправильний пароль (пароль має мати від 6 до 50 символів!), або паролі не співпадають!";
               res.redirect("back");
             } else {
               Invitation.findOneAndUpdate({ email: req.body.email },
                 { $set: { invitationToken: null, invitationExpires: null } }, (error) => {
                   if (error) {
-                    req.session.errorOnSubmit = "Неправильний пароль або паролі не співпадають";;
+                    req.session.errorOnSubmit = "Неправильний пароль (пароль має мати від 6 до 50 символів!), або паролі не співпадають!";;
                     res.redirect("back");
                   } else {
                     req.session.messageOnSubmit = "Користувач успішно створений!";
@@ -47,24 +47,24 @@ module.exports.post = function (req, res) {
           });
 
         } else {
-          let recruiter = new Recruiter({
+          let user = new User({
             email: req.body.email,
             password: req.body.password,
             secondEmail: req.body.secondEmail,
             name: req.body.name,
-            role: "recruiter",
+            role: "user",
             taskLists: []
           });
 
-          recruiter.save((error) => {
+          user.save((error) => {
             if (error) {
-              req.session.errorOnSubmit = "Неправильний пароль або паролі не співпадають";;
+              req.session.errorOnSubmit = "Пароль має мати від 6 до 50 символів!";
               res.redirect("back");
             } else {
               Invitation.findOneAndUpdate({ email: req.body.email },
                 { $set: { invitationToken: null, invitationExpires: null } }, (error) => {
                   if (error) {
-                    req.session.errorOnSubmit = "Неправильний пароль або паролі не співпадають";;
+                    req.session.errorOnSubmit = "Неправильний пароль (пароль має мати від 6 до 50 символів!), або паролі не співпадають!";;
                     res.redirect("back");
                   } else {
                     res.redirect("/login");
@@ -85,7 +85,7 @@ module.exports.get = function (req, res) {
     invitationExpires: { $gt: Date.now() }
   }, function (err, invitation) {
     if (!invitation) {
-      req.session.error = "Недійсний токен, або вийшов строк дії";
+      req.session.error = "Недійсний токен, або вийшов строк дії!";
       res.send({ error: req.session.error });
     } else {
       res.send({

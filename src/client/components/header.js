@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import logo from '../../../public/logo.png';
 
 class Header extends Component {
 	constructor(props) {
@@ -32,8 +33,8 @@ class Header extends Component {
 			case 'superAdmin':
 				userRole = 'Директор';
 				break;
-			case 'recruiter':
-				userRole = 'Рекрутер';
+			case 'user':
+				userRole = 'Користувач';
 				break;
 		}
 
@@ -41,16 +42,13 @@ class Header extends Component {
 	}
 
 	render() {
-		if (this.state.role === 'admin' || this.state.role === 'superAdmin' || this.state.role === 'recruiter' ) {
+		if (this.state.role === 'admin' || this.state.role === 'superAdmin' || this.state.role === 'user' ) {
 			return (	
 				<header>
 					<nav className="navbar navbar-expand-lg d-flex flex-row">													
 						<div className='collapse navbar-collapse d-flex flex-row justify-content-between'>
-							<ul className="navbar-nav align-items-center">	
-								<span className="navbar-brand mb-0 h1">Task manager App</span>												
-								<li className="nav-item">
-									<a className="nav-link" href="/">Головна</a>
-								</li>
+							<ul className="navbar-nav align-items-left">	
+                												
 								<li className="nav-item dropdown">
 									<a className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a>
 									<div className="dropdown-menu" id="dropdown-menu-header" aria-labelledby="navbarDropdown">
@@ -64,22 +62,24 @@ class Header extends Component {
 									</div>
 								</li>
 							</ul>
-							{/* <ul className='navbar-nav'>
-								<form className="form-inline">
-									<input className="form-control mr-2" type="search" placeholder="Пошук" aria-label="Search"/>
-									<button className="btn btn-light my-sm-0" type="submit">Шукати</button>
-								</form>
-							</ul>							 */}
-							<ul className='navbar-nav'>
+              <ul className="navbar-nav align-items-center">
+                <a className="navbar-brand" href="/">
+									<img id="logo" src={logo} className="App-logo" alt="logo" />
+								</a>
+              </ul>
+              
+							<ul className='navbar-nav align-items-right'>
 								<li className='nav-item userHeader'>
 									<Link to='/setting' className='nav-link'>{this.showUser() + ' ' + this.state.name}</Link>
 								</li>
 							</ul>
+
 							<ul className='navbar-nav'>
 								<li className='nav-item'>
 									<Link className="nav-link" to="/login" onClick={this.logout}>Вийти</Link>	
 								</li>
 							</ul>
+
 						</div>						
 					</nav>
 				</header>

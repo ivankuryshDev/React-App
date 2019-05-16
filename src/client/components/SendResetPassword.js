@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import logo from '../../../public/logo.png';
 class SendResetPassword extends Component {
   constructor() {
     super();
@@ -24,6 +24,9 @@ componentDidMount(){
           <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /><label htmlFor="tab-1" className="tab">Відновлення паролю</label>
           <input id="tab-2" type="radio" name="tab" className="for-pwd" /><label htmlFor="tab-2" className="tab"></label>
           <div className="login-form">
+            <div id="login-logo">
+              <img id="login-logo" src={logo} className="App-logo" alt="logo" />
+            </div>
             <form method="POST" action="/api/password_reset" className="form-horizontal">
               <div className="sign-in-htm">
 
@@ -37,7 +40,7 @@ componentDidMount(){
                 </div>
 
                 <div className="group">
-                  <a type="submit" className="btn btn-primary" href='/'>На головну</a>
+                  <a type="submit" className="btn btn-primary" href='/'><i className="fa fa-arrow-left"></i> На головну</a>
                 </div>
                 
                 <span className="text-warning">{this.state.error ? this.state.error: " "}</span>

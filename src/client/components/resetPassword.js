@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link} from 'react-router-dom';
-
+import logo from '../../../public/logo.png';
 class ResetPassword extends Component {
   constructor() {
     super();
@@ -43,17 +43,20 @@ componentDidMount(){
         <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /><label htmlFor="tab-1" className="tab">Відновлення паролю</label>
         <input id="tab-2" type="radio" name="tab" className="for-pwd" /><label htmlFor="tab-2" className="tab"></label>
         <div className="login-form">
+          <div id="login-logo">
+            <img id="login-logo" src={logo} className="App-logo" alt="logo" />
+          </div>
           <form method="POST" action={`/api/reset/${this.state.token}?_method=PATCH`} className="form-horizontal">
             <div className="sign-in-htm">
 
               <div className="group">
                 <label htmlFor="password" className="label">Пароль</label>
-                <input name="password" type="password" className="form-control" id="password"  placeholder="Введіть новий пароль"/>
+                <input name="password" type="password" className="input" id="password"  placeholder="Введіть новий пароль"/>
               </div>
               
               <div className="group">
                 <label htmlFor="confirmPassword" className="label">Підтвердіть пароль</label>
-                <input name="confirmPassword" type="password" className="form-control" id="confirmPassword"  placeholder="Підтвердіть пароль"/>
+                <input name="confirmPassword" type="password" className="input" id="confirmPassword"  placeholder="Підтвердіть пароль"/>
               </div>
               
               <div className="group">

@@ -54,7 +54,7 @@ export default class AddInvitationTable extends Component {
     this.setState({
       [name]: value
     })
-  };
+  }; 
 
   render() {
     return (
@@ -63,33 +63,41 @@ export default class AddInvitationTable extends Component {
         newRole={ this.state.role }/>
               { this.state.isVisible ? (
                 <form method="POST" action="api/invite_many">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Емейл</th>
-                        <th scope="col">Роль</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                        {
-                          this.state.items.map((item,index) => {
-                            return (
-                              <AddUserTable
-                                key={index}
-                                {...item}
-                                onDelete={this.onDelete.bind(this, index)} 
-                                isVisible={this.state.isVisible} 
-                              />
-                            );
-                          })
-                        }
-                    </tbody>
-                  </table>
-                  <button className="btn-primary btn">Надіслати запрошення</button>
+
+                  <div className="card bg-light mb-3">
+                    <div className="card-header">Всі додані користувачі на надсилання запрошення</div>
+                    <div className="card-body">
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Емейл</th>
+                            <th scope="col">Роль</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {
+                              this.state.items.map((item,index) => {
+                                return (
+                                  <AddUserTable
+                                    key={index}
+                                    {...item}
+                                    onDelete={this.onDelete.bind(this, index)} 
+                                    isVisible={this.state.isVisible} 
+                                  />
+                                );
+                              })
+                            }
+                        </tbody>
+                      </table>
+                      <button className="btn-primary btn">Надіслати запрошення</button>
+                    </div>
+                  </div>
+                  
+                  
                 </form>
               ) : (
                 <div></div>

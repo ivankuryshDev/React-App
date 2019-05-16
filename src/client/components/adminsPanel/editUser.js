@@ -15,6 +15,7 @@ class EditUser extends Component {
     };
     this.onEdit = this.onEdit.bind(this);
     this.onEditSubmit = this.onEditSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
 
@@ -69,7 +70,7 @@ class EditUser extends Component {
                       <input type="email" name="secondEmail" placeholder="Second Email" className="form-control" ref={secondEmail => this.secondEmail = secondEmail} defaultValue={secondEmail} required />
                       <span>Роль</span>
                       <select className="form-control" name="role" ref={role => this.role = role} defaultValue={role}>
-                        <option value="recruiter" defaultValue>Рекрутер</option>
+                        <option value="user" defaultValue>Користувач</option>
                         <option value="admin" >Адміністратор</option>
                       </select>
                       <br></br>
@@ -82,12 +83,22 @@ class EditUser extends Component {
               </tr>
             )
             : (
-              <tr>
-                <td>{email}</td>
-                <td>{role}</td>
-                <td><button type="button" className="btn btn-primary" onClick={this.onEdit}>Редагувати</button></td>
-                <td><button type="button" className="btn btn-danger" onClick={this.onDelete.bind(this)}>Видалити</button></td>
-              </tr>
+                role !== 'superAdmin' ?
+              (
+                <tr>
+                  <td>{email}</td>
+                  <td>{role}</td>
+                  <td><button type="button" className="btn btn-primary" onClick={this.onEdit}>Редагувати</button></td>
+                  <td><button type="button" className="btn btn-danger" onClick={this.onDelete}>Видалити</button></td>
+                </tr>
+              ):(
+                <tr>
+                  <td>{email}</td>
+                  <td>{role}</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              )
             )
         }
       </Router>
