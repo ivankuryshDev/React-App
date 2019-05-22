@@ -95,6 +95,5 @@ module.exports.get = function (req, res) {
       });
       req.session.destroy();
     }
-
   });
 };

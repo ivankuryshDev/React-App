@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 export default class Setting extends Component {
-  
   constructor(props) {
 		super(props);
       this.state = {
@@ -10,7 +8,6 @@ export default class Setting extends Component {
         isEdit: true,
         isSave: false
       };
-
     this.onEditSubmit = this.onEditSubmit.bind(this);
     this.onEdit = this.onEdit.bind(this);
   }
@@ -80,7 +77,6 @@ export default class Setting extends Component {
           </div>
         </form>
       </div>
-      
     );
   }
 }

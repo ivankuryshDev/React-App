@@ -57,8 +57,6 @@ router.get("/:id",getAdmin.get);
 
 router.patch("/:id",patchAdmin.patch);
 
-
-
 router.get("/reset/:token",setNewPassword.get);
 
 router.patch("/reset/:token",setNewPassword.set);

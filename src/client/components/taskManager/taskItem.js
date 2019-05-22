@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 
 import{
-	BrowserRouter as Router,
-	Route,
-	Link
+	BrowserRouter as Router
 } from 'react-router-dom';
-
 class TaskItem extends Component {
     constructor(props){
 		super(props);
-
 		this.state = {
 			isEdit: false
 		};
-
 		this.onDeleteTask = this.onDeleteTask.bind(this);
 		this.onEdit = this.onEdit.bind(this);
 		this.onEditTask = this.onEditTask.bind(this);
@@ -24,27 +19,25 @@ class TaskItem extends Component {
     const {onDeleteTask, id} = this.props;
 		onDeleteTask(id);
   }
+
   onEdit(){
-    console.log(this.props.id);
     if(this.state.isEdit){
       this.setState({ isEdit: false });
     }else{
       this.setState({ isEdit: true });
     }
   }
+
   onEditTask(event){
     event.preventDefault();
     this.props.onEditTask(this.props.id, this.nameInput.value);
 		this.setState({ isEdit: false });
   }
+
   handleInputChange(event){
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    console.log("target: ", target);
-    console.log("value: ", value);
-    console.log("name: ", name);
-    console.log("this.props.isСompleted: ", this.props.isСompleted);
     this.props.handleInputChange(this.props.id, value);
   }
 
@@ -83,14 +76,12 @@ class TaskItem extends Component {
 					: (
             <li className="list-group-item box1">
               <div className="row no-gutters">
-                
                 <div className="col-2">
                   <label className="checkbox">
                     <input type="checkbox" defaultChecked={isСompleted} onChange={this.handleInputChange}/>
                     <span className="danger"></span>
                   </label>
                 </div>
-                
                 <div className="col-8">
                   <p className="task">
                     {
@@ -103,7 +94,6 @@ class TaskItem extends Component {
                     }
                   </p>
                 </div>
-                
                 <ul className="icon">
                     <li><a className="button-close" onClick={this.onDeleteTask}><i className="fa fa-close"></i></a></li>
                     <li><a className="button-edit" onClick={this.onEdit}><i className="fa fa-edit"></i></a></li>
@@ -115,6 +105,5 @@ class TaskItem extends Component {
       </Router>
     );
   }
-
 }
 export default TaskItem;

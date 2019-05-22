@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 
 import{
-	BrowserRouter as Router,
-	Route,
-	Link
+	BrowserRouter as Router
 } from 'react-router-dom';
 
 import TaskItem from './taskItem';
 import AddTask from './addTask';
-
 class ListItem extends Component {
     constructor(props){
 		super(props);
-
 		this.state = {
       isEdit: false,
       isAdded: false
 		};
-
 		this.onDeleteList = this.onDeleteList.bind(this);
 		this.onDeleteTask = this.onDeleteTask.bind(this);
 		this.onEdit = this.onEdit.bind(this);
@@ -37,6 +32,7 @@ class ListItem extends Component {
     const {onDeleteTask, id} = this.props;
     onDeleteTask(id, taskId);
   }
+
   onEdit(){
     if(this.state.isEdit){
       this.setState({ isEdit: false });
@@ -44,11 +40,13 @@ class ListItem extends Component {
       this.setState({ isEdit: true });
     }
   }
+
   onEditList(event){
     event.preventDefault();
     this.props.onEditList(this.nameInput.value, this.props.id);
 		this.setState({ isEdit: false });
   }
+
   onEditTask(taskId, taskName){
     const {onEditTask, id} = this.props;
     onEditTask(id, taskId, taskName);
@@ -85,7 +83,6 @@ class ListItem extends Component {
                         <form onSubmit={this.onEditList}>
                           <div className="form-group mb-3">
                             <div className="input-group-append">
-
                               <div className="row no-gutters">
                                 <div className="col-8">
                                   <input placeholder="Name" className="form-control input-list" ref={nameInput => this.nameInput = nameInput} defaultValue={name} required/>
@@ -105,11 +102,9 @@ class ListItem extends Component {
                     ):(
                       <div className="col">
                         <div className="row no-gutters">
-
                           <div className="col-10">
                             <h5 className="task">{name}</h5>
                           </div>
-                          
                           <div className="col-2">
                             <div className="dropdown">
                               <button className="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -121,7 +116,6 @@ class ListItem extends Component {
                               </div>
                             </div>
                           </div>
-
                         </div>
                       </div>
                     )

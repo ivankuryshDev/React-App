@@ -6,7 +6,6 @@ import AddUserTable from './addUserTable';
 export default class AddInvitationTable extends Component {
   constructor() {
     super();
-
     this.state = {
       email: '',
       role: '',
@@ -17,25 +16,19 @@ export default class AddInvitationTable extends Component {
   };
 
   onDelete(index){
-
-
     const lists = this.state.items;
-
     if(lists.length===1){
       this.setState({items: []});
     } else {
        lists.splice(index, 1);
       this.setState({items: lists});
     }
-    
   }
  
-
   handleFormSubmit = (e) => {
     e.preventDefault();
     this.state.isVisible = true;
     let items = [...this.state.items];
-
     items.push({email: this.state.email, role: this.state.role});
 
     this.setState({
@@ -61,47 +54,43 @@ export default class AddInvitationTable extends Component {
       <div>
         <AddUser handleFormSubmit={ this.handleFormSubmit } handleInputChange={ this.handleInputChange } newEmail={ this.state.email } 
         newRole={ this.state.role }/>
-              { this.state.isVisible ? (
-                <form method="POST" action="api/invite_many">
-
-                  <div className="card bg-light mb-3">
-                    <div className="card-header">Всі додані користувачі на надсилання запрошення</div>
-                    <div className="card-body">
-                      <table className="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Емейл</th>
-                            <th scope="col">Роль</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            
-                          </tr>
-                        </thead>
-                        <tbody>
-                            {
-                              this.state.items.map((item,index) => {
-                                return (
-                                  <AddUserTable
-                                    key={index}
-                                    {...item}
-                                    onDelete={this.onDelete.bind(this, index)} 
-                                    isVisible={this.state.isVisible} 
-                                  />
-                                );
-                              })
-                            }
-                        </tbody>
-                      </table>
-                      <button className="btn-primary btn">Надіслати запрошення</button>
-                    </div>
-                  </div>
-                  
-                  
-                </form>
-              ) : (
-                <div></div>
-              )}
+          { this.state.isVisible ? (
+            <form method="POST" action="api/invite_many">
+              <div className="card bg-light mb-3">
+                <div className="card-header">Всі додані користувачі для надсилання запрошення</div>
+                <div className="card-body">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Емейл</th>
+                        <th scope="col">Роль</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>  
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {
+                          this.state.items.map((item,index) => {
+                            return (
+                              <AddUserTable
+                                key={index}
+                                {...item}
+                                onDelete={this.onDelete.bind(this, index)} 
+                                isVisible={this.state.isVisible} 
+                              />
+                            );
+                          })
+                        }
+                    </tbody>
+                  </table>
+                  <button className="btn-primary btn">Надіслати запрошення</button>
+                </div>
+              </div>
+            </form>
+          ) : (
+            <div></div>
+          )}
       </div>
     );
   }

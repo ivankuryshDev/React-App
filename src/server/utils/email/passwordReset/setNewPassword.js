@@ -19,8 +19,6 @@ module.exports.get = function (req, res) {
   });
 };
 
-
-
 module.exports.set = function (req, res) {
   if (req.body.password !== req.body.confirmPassword) {
 

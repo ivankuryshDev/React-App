@@ -25,12 +25,11 @@ componentDidMount(){
   .then(res => this.setState({ message: res.message, 
     error: res.error, errorMessage: res.errorMessage}))
     .catch(err => err);
-  
 }
 
-	render() {
-    return (
-      <div className="container">
+render() {
+  return (
+    <div className="container">
       { this.state.errorMessage ? 
       <div>
         <h2>{this.state.errorMessage}</h2>
@@ -39,54 +38,36 @@ componentDidMount(){
       </div>
       : 
       <div className="login-wrap">
-      <div className="login-html">
-        <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /><label htmlFor="tab-1" className="tab">Відновлення паролю</label>
-        <input id="tab-2" type="radio" name="tab" className="for-pwd" /><label htmlFor="tab-2" className="tab"></label>
-        <div className="login-form">
-          <div id="login-logo">
-            <img id="login-logo" src={logo} className="App-logo" alt="logo" />
-          </div>
-          <form method="POST" action={`/api/reset/${this.state.token}?_method=PATCH`} className="form-horizontal">
-            <div className="sign-in-htm">
-
-              <div className="group">
-                <label htmlFor="password" className="label">Пароль</label>
-                <input name="password" type="password" className="input" id="password"  placeholder="Введіть новий пароль"/>
-              </div>
-              
-              <div className="group">
-                <label htmlFor="confirmPassword" className="label">Підтвердіть пароль</label>
-                <input name="confirmPassword" type="password" className="input" id="confirmPassword"  placeholder="Підтвердіть пароль"/>
-              </div>
-              
-              <div className="group">
-                <input type="submit" className="button" value="Надіслати" />
-              </div>
-              
-              <span className="text-danger">{this.state.error ? this.state.error: " "}</span>
-
-              <div className="hr"></div>
+        <div className="login-html">
+          <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /><label htmlFor="tab-1" className="tab">Відновлення паролю</label>
+          <input id="tab-2" type="radio" name="tab" className="for-pwd" /><label htmlFor="tab-2" className="tab"></label>
+          <div className="login-form">
+            <div id="login-logo">
+              <img id="login-logo" src={logo} className="App-logo" alt="logo" />
             </div>
-          </form>
+            <form method="POST" action={`/api/reset/${this.state.token}?_method=PATCH`} className="form-horizontal">
+              <div className="sign-in-htm">
+                <div className="group">
+                  <label htmlFor="password" className="label">Пароль</label>
+                  <input name="password" type="password" className="input" id="password"  placeholder="Введіть новий пароль"/>
+                </div>
+                <div className="group">
+                  <label htmlFor="confirmPassword" className="label">Підтвердіть пароль</label>
+                  <input name="confirmPassword" type="password" className="input" id="confirmPassword"  placeholder="Підтвердіть пароль"/>
+                </div>
+                <div className="group">
+                  <input type="submit" className="button" value="Надіслати" />
+                </div>
+                <span className="text-danger">{this.state.error ? this.state.error: " "}</span>
+                <div className="hr"></div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-  </div>
-
-      // <form method="POST" action={`/api/reset/${this.state.token}?_method=PATCH`} className="container">
-      //   <h2>Відновлення паролю</h2>
-      //   <div className="form-group">
-      //     <label htmlFor="password">Пароль</label>
-      //     <input name="password" type="password" className="form-control" id="password"  placeholder="Введіть новий пароль"/>
-      //     <label htmlFor="confirmPassword">Підтвердіть пароль</label>
-      //     <input name="confirmPassword" type="password" className="form-control" id="confirmPassword"  placeholder="Підтвердіть пароль"/>
-      //   </div>
-      //   <button type="submit" className="btn btn-block btn-primary">Надіслати</button>
-      //   <span className="text-danger">{this.state.error ? this.state.error: " "}</span>
-      // </form>
       }
-      </div> 
+    </div> 
 		);
 	}
 }
-
 export default ResetPassword;

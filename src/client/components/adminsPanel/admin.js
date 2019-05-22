@@ -22,6 +22,7 @@ class Admin extends Component {
   getLists() {
     return this.state.lists;
   }
+  
   onAdd(email, role) {
     const lists = this.getLists();
     lists.push({
@@ -29,7 +30,6 @@ class Admin extends Component {
       role
     });
     this.setState({ lists });
-
   }
 
   componentDidMount() {
@@ -40,14 +40,12 @@ class Admin extends Component {
       .then(res => res.json())
       .then(res => this.setState({ lists: res, message: res.message }))
   }
+
   render() {
-    console.log("this role",this.state.role);
     return (
       <div className=''>
         {this.state.role === 'admin' || this.state.role === 'superAdmin' ?
-          
           <div className=''>
-
             <div className="row">
               <div className="col-2">
                 <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -60,8 +58,7 @@ class Admin extends Component {
                   <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                   <AddInvitationTable />
                   </div>
-                  <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                    
+                  <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">  
                     <div className="card bg-light mb-3">
                       <div className="card-header">Всі користувачі</div>
                       <div className="card-body">
@@ -91,13 +88,10 @@ class Admin extends Component {
                         </table>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
           : this.state.role === null ? <Login />
             : <div className="error404">
@@ -108,6 +102,5 @@ class Admin extends Component {
       </div>
     );
   }
-
 }
 export default Admin;

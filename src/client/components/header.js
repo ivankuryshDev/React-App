@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import logo from '../../../public/logo.png';
-
 class Header extends Component {
 	constructor(props) {
 		super(props);
@@ -10,7 +9,8 @@ class Header extends Component {
 			name: ''
 		};
 		this.logout = this.logout.bind(this);
-	}
+  }
+  
 	componentDidMount() {
 		fetch('/api/')
 			.then(res => res.json())
@@ -25,7 +25,6 @@ class Header extends Component {
 	
 	showUser() {
 		let userRole = '';
-
 		switch(this.state.role) {
 			case 'admin':
 				userRole = 'Адміністратор';
@@ -37,7 +36,6 @@ class Header extends Component {
 				userRole = 'Користувач';
 				break;
 		}
-
 		return userRole;
 	}
 
@@ -47,8 +45,7 @@ class Header extends Component {
 				<header>
 					<nav className="navbar navbar-expand-lg d-flex flex-row">													
 						<div className='collapse navbar-collapse d-flex flex-row justify-content-between'>
-							<ul className="navbar-nav align-items-left">	
-                												
+							<ul className="navbar-nav">										
 								<li className="nav-item dropdown">
 									<a className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a>
 									<div className="dropdown-menu" id="dropdown-menu-header" aria-labelledby="navbarDropdown">
@@ -62,24 +59,21 @@ class Header extends Component {
 									</div>
 								</li>
 							</ul>
-              <ul className="navbar-nav align-items-center">
+              <ul className="navbar-nav">
                 <a className="navbar-brand" href="/">
 									<img id="logo" src={logo} className="App-logo" alt="logo" />
 								</a>
               </ul>
-              
-							<ul className='navbar-nav align-items-right'>
+							<ul className='navbar-nav'>
 								<li className='nav-item userHeader'>
 									<Link to='/setting' className='nav-link'>{this.showUser() + ' ' + this.state.name}</Link>
 								</li>
 							</ul>
-
 							<ul className='navbar-nav'>
 								<li className='nav-item'>
 									<Link className="nav-link" to="/login" onClick={this.logout}>Вийти</Link>	
 								</li>
 							</ul>
-
 						</div>						
 					</nav>
 				</header>
@@ -89,8 +83,6 @@ class Header extends Component {
 				<div></div>
 			);
 		}
-
 	}
 }
-
 export default Header;

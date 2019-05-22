@@ -11,7 +11,7 @@ module.exports.send = function (req, res) {
       {
         'From': {
           'Email': 'development2728@gmail.com',
-          'Name': 'Task manager App'
+          'Name': 'Task Manager App'
         },
         'To': [
           {
@@ -19,9 +19,9 @@ module.exports.send = function (req, res) {
           }
         ],
         'Subject': 'Invite to Task manager App!',
-        'TextPart': 'Task manager App',
-        'HTMLPart': '<h3>Task manager App</h3>' +
-            '<p>You are invited to register in the Task manager App. ' +
+        'TextPart': 'Task Manager App',
+        'HTMLPart': '<h3>Task Manager App</h3>' +
+            '<p>You are invited to register in the Task Manager App. ' +
             'Please confirm the registration! </p>' + 'http://' + "localhost:3000" + '/signup/'
             + token + '\n\n'
       }
