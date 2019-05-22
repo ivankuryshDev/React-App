@@ -78,7 +78,7 @@ componentDidMount(){
                 </div>
                 <div className="br"></div>
                 <div className="group">
-                  <button type="submit" className="btn btn-block btn-primary">Надіслати</button>
+                  <button type="submit" className="btn btn-block btn-primary">Готово!</button>
                 </div>
                 <div className="hr"></div>
               </div>

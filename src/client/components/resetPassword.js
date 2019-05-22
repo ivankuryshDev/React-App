@@ -56,7 +56,7 @@ render() {
                   <input name="confirmPassword" type="password" className="input" id="confirmPassword"  placeholder="Підтвердіть пароль"/>
                 </div>
                 <div className="group">
-                  <input type="submit" className="button" value="Надіслати" />
+                  <input type="submit" className="button" value="Змінити!" />
                 </div>
                 <span className="text-danger">{this.state.error ? this.state.error: " "}</span>
                 <div className="hr"></div>
