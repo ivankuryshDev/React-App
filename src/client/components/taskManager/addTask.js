@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class AddTask extends Component {
 	constructor(props){
 		super(props);
-
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onAddTaskInput = this.onAddTaskInput.bind(this);
   }
@@ -43,5 +42,4 @@ class AddTask extends Component {
 		);
 	}
 }
-
 export default AddTask;

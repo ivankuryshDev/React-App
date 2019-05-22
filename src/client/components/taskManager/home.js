@@ -1,54 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router,
-   Link, Redirect } from 'react-router-dom';
+
 import Login from '../login';
 import ListItem from './listItem';
 import AddList from './addList';
-
-var newE = true;
-if (newE){
-	var lists = [
-		{
-			id: 1,
-			name: 'iPad',
-			tasks: [
-          {
-            id: 1,
-            taskName: 'To do smg',
-            isСompleted: false
-          },
-          {
-            id: 2,
-            taskName: 'Make money',
-            isСompleted: false
-          },
-          {
-            id: 3,
-            taskName: 'Make money evsd gsr rfserfgestg sfregesr rgtdrgesh lkmglsem sgmeklg sgkl gskel',
-            isСompleted: false
-          }
-			]
-		},
-		{
-			id: 2,
-			name: 'Second',
-			tasks: [
-          {
-            id: 1,
-            taskName: 'Wash the car',
-            isСompleted: false
-          },
-          {
-            id: 2,
-            taskName: 'Go shopping',
-            isСompleted: true
-          }
-			]
-		}
-	];
-	
-}
-var id;
 
 export default class Home extends Component {
   constructor(props) {
@@ -60,7 +14,6 @@ export default class Home extends Component {
       lists: [],
       isAdded: false
     };
-    
     this.onAddList = this.onAddList.bind(this);
     this.onAddTask = this.onAddTask.bind(this);
     this.onAddListInput = this.onAddListInput.bind(this);
@@ -104,10 +57,8 @@ export default class Home extends Component {
 			  name
       });
     }
-    
     this.setState({lists});
     this.setState({ isAdded: false});
-
     this.patchTaskLists();
   }
 
@@ -145,7 +96,6 @@ export default class Home extends Component {
       }
     }
     this.setState({lists: lists});
-
     this.patchTaskLists();
   }
 
@@ -160,7 +110,6 @@ export default class Home extends Component {
       }
     }
     this.setState({lists: lists});
-
     this.patchTaskLists();
   }
 
@@ -174,7 +123,6 @@ export default class Home extends Component {
 		});
 
     this.setState({ lists });
-    
     this.patchTaskLists();
   }
 
@@ -188,7 +136,6 @@ export default class Home extends Component {
       }
     }
     this.setState({ lists: lists });
-
     this.patchTaskLists();
   }
 
@@ -205,32 +152,21 @@ export default class Home extends Component {
     for(var item in lists){
       for(var task in lists[item].tasks){
         if(lists[item].tasks[task].id === taskId && lists[item].id === listId){
-          console.log("isСompleted: ", lists[item].tasks[task].isСompleted);
           lists[item].tasks[task].isСompleted = value;
         }
       }
     }
     this.setState({ lists: lists });
-    console.log("Updated object: ", lists);
-
     this.patchTaskLists();
   }
 
   patchTaskLists(){
-    console.log("this.state.email:", this.state.email);
     return fetch('/api/admin/taskLists', {
       method: 'PATCH',
       body: JSON.stringify({email: this.state.email, taskLists: this.state.lists }),
       headers: { 'Content-type': 'application/json' }
     }).catch(err => err);
   }
-
-  // componentDidMount() {
-  //   fetch('/api/')
-	// 	.then(res => res.json())
-  //   .then(res => this.setState({ role: res.role, userId: res.id, name: res.name}))    
-  //   .catch(err => err);  
-  // }
 
   render() {
     const { role } = this.state;
@@ -245,7 +181,7 @@ export default class Home extends Component {
                 (
                   this.state.lists.map((list) => {
                     return (
-                      <div key={list.id} className="col-4">
+                      <div key={list.id} className="col-xl-4 col-md-6 col-sm-12 col-12">
                         <div className="list">
                           <ListItem
                             key={list.id}
@@ -279,7 +215,6 @@ export default class Home extends Component {
               </div>  
             </div>
           </div>
-          
         : <Login />}
         </div>
       );

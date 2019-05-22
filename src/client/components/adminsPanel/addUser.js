@@ -10,15 +10,13 @@ class AddUser extends Component {
               <div className="card-body">
                 <h5 className="card-title">Додати користувача</h5>
                 <form className="form-group" onSubmit={this.props.handleFormSubmit}>
-
-                <div className="input-group mb-3">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1">Емайл</span>
+                  <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text" id="basic-addon1">Емайл</span>
+                    </div>
+                    <input id="email" type="text" className="form-control" value={this.props.newEmail} type="text" placeholder="напр. someemail@gmail.com" aria-label="Email" aria-describedby="basic-addon1"
+                      name="email" onChange={this.props.handleInputChange} required/>
                   </div>
-                  <input id="email" type="text" className="form-control" value={this.props.newEmail} type="text" placeholder="напр. someemail@gmail.com" aria-label="Email" aria-describedby="basic-addon1"
-                    name="email" onChange={this.props.handleInputChange} required/>
-                </div>
-
                   <div className="input-group mb-3">
                     <div className="input-group-prepend">
                       <label className="input-group-text" htmlFor="inputGroupSelect01">Роль</label>
@@ -29,7 +27,6 @@ class AddUser extends Component {
                       <option value="user">Користувач</option>
                     </select>
                   </div>
-
                   <button type="submit" className="btn btn-success btn-default" value="Submit">Додати користувача</button>
                 </form>
               </div>

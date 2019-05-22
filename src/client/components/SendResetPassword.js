@@ -10,12 +10,12 @@ class SendResetPassword extends Component {
     }
   }
   
-componentDidMount(){
-  fetch("/api/password_reset")
-  .then(res => res.json())
-  .then(res => this.setState({ message: res.message ,
-     error: res.error ? res.error : " "}));
-}
+  componentDidMount(){
+    fetch("/api/password_reset")
+    .then(res => res.json())
+    .then(res => this.setState({ message: res.message ,
+      error: res.error ? res.error : " "}));
+  }
 
 	render() {
 		return (
@@ -29,42 +29,25 @@ componentDidMount(){
             </div>
             <form method="POST" action="/api/password_reset" className="form-horizontal">
               <div className="sign-in-htm">
-
                 <div className="group">
                   <label htmlFor="email" className="label">Email</label>
                   <input name="email" type="email" className="input" id="email" aria-describedby="emailHelp" placeholder="Введіть емейл"/>
                 </div>
-                
                 <div className="group">
                   <input type="submit" className="button" value="Надіслати" />
                 </div>
-
                 <div className="group">
                   <a type="submit" className="btn btn-primary" href='/'><i className="fa fa-arrow-left"></i> На головну</a>
                 </div>
-                
                 <span className="text-warning">{this.state.error ? this.state.error: " "}</span>
                 <span className="text-success">{this.state.message ? this.state.message: " "}</span>
-
                 <div className="hr"></div>
               </div>
             </form>
           </div>
         </div>
       </div>
-      // <form method="POST" action="/api/password_reset" className="container">
-      //   <h2>Відновлення паролю</h2>
-      //   <div className="form-group">
-      //     <label htmlFor="email">Емейл</label>
-      //     <input name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Введіть емейл"/>
-      //   </div>
-      //   <button type="submit" className="btn btn-block btn-primary">Надіслати</button>
-      //   <a type="submit" className="btn btn-block btn-primary" href='/'>На головну</a>
-      //   <span className="text-danger">{this.state.error ? this.state.error: " "}</span>
-      //   <span className="text-success">{this.state.message ? this.state.message: " "}</span>
-      // </form>
 		);
 	}
 }
-
 export default SendResetPassword;

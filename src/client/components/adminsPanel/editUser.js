@@ -4,11 +4,9 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom';
 
-
 class EditUser extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       role: ' ',
       email: ' '
@@ -17,7 +15,6 @@ class EditUser extends Component {
     this.onEditSubmit = this.onEditSubmit.bind(this);
     this.onDelete = this.onDelete.bind(this);
   }
-
 
   onDelete() {
     return fetch('/api/admin/delete', {
@@ -33,11 +30,10 @@ class EditUser extends Component {
     } else {
       this.setState({ isEdit: true });
     }
-
   }
+
   onEditSubmit() {
     this.props.onEditSubmit(this.email.value, this.role.value, this.secondEmail.value, this.name.value, this.password.value);
-
     this.setState({ isEdit: false });
     fetch('/api/admin/patch', {
       method: 'PATCH',
@@ -105,5 +101,4 @@ class EditUser extends Component {
     );
   }
 }
-
 export default EditUser;

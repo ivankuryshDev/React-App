@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class addList extends Component {
 	constructor(props){
 		super(props);
-
     this.onSubmit = this.onSubmit.bind(this);
     this.onAddListInput = this.onAddListInput.bind(this);
 	}
@@ -46,9 +45,7 @@ class addList extends Component {
           </div>
         </li>
       </ul>
-
 		);
 	}
 }
-
 export default addList;
