@@ -4,7 +4,7 @@
 
 Розроблена за допомогою таких тахнологій: <strong>ES6</strong>, <strong>HTML5</strong>, <strong>CSS3</strong>, <strong>Bootstrap</strong>; <strong>React</strong>, <strong>Node.js</strong>, <strong>Express.js</strong>, <strong>Passport.js</strong>, <strong>Mongoose</strong>, <strong>MongoDB</strong>, <strong>webpack</strong>.
 
-Програма має три ролі: Простий користувач (<strong>user</strong>), адміністратор (<strong>admin</strong>) і керівник (<strong>superAdmin</strong>).
+Програма має три ролі: простий користувач (<strong>user</strong>), адміністратор (<strong>admin</strong>) і керівник (<strong>superAdmin</strong>).
 
 <strong>Сторінка авторизації і реєстрації</strong> складається із двох вкладок. Вкладка входу має два поля вводу: email і пароль, а також посилання на відновлення паролю і саму кнопку входу. Вкладка реєстрації має поле вводу Email і кнопку надіслати. Поле Email має валідацію. Після введення валідного email'у на нього буде надіслано запрошення для реєстрації і посилання на неї. Після переходу по реєстраційному посиланню користувач перейде на безпосередню сторінку реєстрації. 
 
