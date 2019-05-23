@@ -2,7 +2,7 @@
 
   <strong>Task Manager App</strong> - програма для складання та управління своїми щоденними завданнями.
 
-Розроблена за допомогою таких тахнологій: ES6, HTML5, CSS3, Bootstrap; React, Node.js, Express.js, Passport.js, Mongoose, MongoDB, webpack.
+Розроблена за допомогою таких тахнологій: <strong>ES6</strong>, <strong>HTML5</strong>, <strong>CSS3</strong>, <strong>Bootstrap</strong>; <strong>React</strong>, <strong>Node.js</strong>, <strong>Express.js</strong>, <strong>Passport.js</strong>, <strong>Mongoose</strong>, <strong>MongoDB</strong>, <strong>webpack</strong>.
 
 Програма має три ролі: Простий користувач (<strong>user</strong>), адміністратор (<strong>admin</strong>) і керівник (<strong>superAdmin</strong>).
 
