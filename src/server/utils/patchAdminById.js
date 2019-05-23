@@ -3,7 +3,7 @@ const Admin = require("../model/admin");
 module.exports.patch = function (req,res) {
 
   if (req.body.password!==req.body.confirmPassword){
-    return res.send("passwords doesn't coincidence")
+    return res.send("Паролі не співпадають!");
   }
 
   let updatedOptions = {

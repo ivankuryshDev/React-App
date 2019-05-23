@@ -34,7 +34,7 @@ module.exports.send = function (req, res) {
         // Render the index route on success
         if (res.headersSent) {
         } else {
-          req.session.messageOnSubmit = "Користувач успішно створений!";
+          req.session.messageOnSubmit = "Перезагрузіть будь ласка сторінку!";
           return res.redirect("back");
         }
       })

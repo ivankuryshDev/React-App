@@ -38,7 +38,8 @@ componentDidMount(){
             </div>
             {this.state.messageOnSubmit ? 
               <div>
-              <span>{this.state.messageOnSubmit}</span>
+                <span className="text-warning">{this.state.messageOnSubmit}</span>
+                {window.location.reload()}
               <br></br>
               <Link className="btn btn-primary" to="/">На Головну</Link>
               </div>
@@ -52,13 +53,13 @@ componentDidMount(){
             <form method="POST" action={`/api/signup/${this.state.token}`} className=" form-horizontal">
               <div className="sign-in-htm">
                 <div className="group">
-                  <label htmlFor="user" className="label">Емейл</label>
+                  <label htmlFor="user" className="label">Email</label>
                   <input required name="email" value={this.state.email} type="hidden" className="input"/>
                   <input id="email" name="email" value={this.state.email} disabled type="email" className="input"/>
                 </div>
                 <div className="group">
-                  <label htmlFor="email" className="label">Емейл для сповіщень</label>
-                  <input required autoComplete="email" id="email" name="secondEmail" type="email" className="input" placeholder="Введіть емейл для сповіщень"/>
+                  <label htmlFor="email" className="label">Email для сповіщень</label>
+                  <input required autoComplete="email" id="email" name="secondEmail" type="email" className="input" placeholder="Введіть email для сповіщень"/>
                 </div>
                 <div className="group">
                   <label htmlFor="name" className="label">Ім'я</label>
