@@ -1,6 +1,6 @@
 # Task Manager App
 
-  Task Manager App - програма для складання та управління своїми щоденними завданнями.
+  <em>Task Manager App</em> - програма для складання та управління своїми щоденними завданнями.
 
   Розроблена за допомогою таких тахнологій: ES6, HTML5, CSS3, Bootstrap; React, Node.js, Express.js, Passport.js, Mongoose, MongoDB, webpack.
 
