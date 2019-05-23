@@ -114,8 +114,9 @@ ul.navbar-nav.align-items-center{
 }
 
 .error404 {
+  position: relative;
   color: red;
-  text-align: center
+  text-align: center;
 }
 
 

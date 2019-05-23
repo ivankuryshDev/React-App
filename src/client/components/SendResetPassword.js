@@ -31,7 +31,7 @@ class SendResetPassword extends Component {
               <div className="sign-in-htm">
                 <div className="group">
                   <label htmlFor="email" className="label">Email</label>
-                  <input name="email" type="email" className="input" id="email" aria-describedby="emailHelp" placeholder="Введіть емейл"/>
+                  <input name="email" type="email" className="input" id="email" aria-describedby="emailHelp" placeholder="Введіть емейл" required/>
                 </div>
                 <div className="group">
                   <input type="submit" className="button" value="Надіслати" />

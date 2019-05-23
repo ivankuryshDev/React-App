@@ -111,8 +111,8 @@ class ListItem extends Component {
                                 <i className="fa fa-cog" aria-hidden="true"></i>
                               </button>
                               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" onClick={this.onEdit}><i className="fa fa-edit fa-fw"></i>Edit</a>
-                                <a className="dropdown-item" onClick={this.onDeleteList}><i className="fa fa-close fa-fw"></i>Delete</a>
+                                <a className="dropdown-item" onClick={this.onEdit}><i className="fa fa-edit fa-fw"></i>Редагувати</a>
+                                <a className="dropdown-item" onClick={this.onDeleteList}><i className="fa fa-close fa-fw"></i>Видалити</a>
                               </div>
                             </div>
                           </div>

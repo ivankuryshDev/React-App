@@ -49,16 +49,16 @@ render() {
               <div className="sign-in-htm">
                 <div className="group">
                   <label htmlFor="password" className="label">Пароль</label>
-                  <input name="password" type="password" className="input" id="password"  placeholder="Введіть новий пароль"/>
+                  <input name="password" type="password" className="input" id="password"  placeholder="Введіть новий пароль" required/>
                 </div>
                 <div className="group">
                   <label htmlFor="confirmPassword" className="label">Підтвердіть пароль</label>
-                  <input name="confirmPassword" type="password" className="input" id="confirmPassword"  placeholder="Підтвердіть пароль"/>
+                  <input name="confirmPassword" type="password" className="input" id="confirmPassword"  placeholder="Підтвердіть пароль" required/>
                 </div>
                 <div className="group">
                   <input type="submit" className="button" value="Змінити!" />
                 </div>
-                <span className="text-danger">{this.state.error ? this.state.error: " "}</span>
+                <span className="text-warning">{this.state.error ? this.state.error: " "}</span>
                 <div className="hr"></div>
               </div>
             </form>

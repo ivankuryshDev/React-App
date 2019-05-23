@@ -95,9 +95,8 @@ class Admin extends Component {
           </div>
           : this.state.role === null ? <Login />
             : <div className="error404">
-              <h1>Error 404</h1>
-              <h2>Page not found!</h2>
-            </div>
+                <h1>Доступ до даної сторінки заборонений!</h1>
+              </div>
         }
       </div>
     );

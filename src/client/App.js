@@ -33,6 +33,8 @@ class App extends Component {
               <Route exact path='/password_reset' component={SendResetPassword}/>
               <Route exact path='/api/password_reset' component={SendResetPassword}/>              
               <Route render={() => (<div className="error404">
+                                    <br></br>
+                                    <br></br>
                                       <h1>Error 404</h1>
                                       <h2>Page not found!</h2>
                                     </div>)} />
